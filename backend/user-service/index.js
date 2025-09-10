@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 // MongoDB connection
 mongoose
   .connect(
-    "mongodb+srv://pavan:pavanvanam@cluster0.ygoracm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    ""
   )
   .then(() => {
     console.log("Connected to MongoDB");
@@ -98,3 +98,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`User Service is running on http://localhost:${PORT}`);
 });
+
