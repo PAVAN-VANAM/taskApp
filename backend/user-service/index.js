@@ -1,19 +1,30 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB connection
+// MongoDB connection for Local running purpose
+// mongoose
+//   .connect(
+//     "mongodb://localhost:27017/users"
+//   )
+//   .then(() => {
+//     console.log("Connected to MongoDB");
+//   })
+//   .catch((err) => {
+//     console.error("Failed to connect to MongoDB", err);
+//   });
+
+
+// docker mongodb container connection
 mongoose
   .connect(
-    ""
+    "mongodb://mongo:27017/users"
   )
   .then(() => {
     console.log("Connected to MongoDB");
@@ -21,6 +32,8 @@ mongoose
   .catch((err) => {
     console.error("Failed to connect to MongoDB", err);
   });
+
+
 
 // schema
 const UserSchema = new mongoose.Schema({
